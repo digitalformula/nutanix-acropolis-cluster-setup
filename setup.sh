@@ -19,6 +19,7 @@ PRISM_CENTRAL_DATA_ISO=$NFS_EXPORT/Nutanix/Prism_Central/4.5.0.2/AHV/4.5.0.2-pri
 VIRTIO_ISO=$NFS_EXPORT/Other/VirtIO/0.1.102_ISO/virtio-win-0.1.102.iso;
 
 VLAN_NAME=vlan.0
+VLAN=0
 VLAN_IP_CONFIG=10.10.10.253/24
 DHCP_START=10.10.10.100
 DHCP_END=10.10.10.200
@@ -55,7 +56,7 @@ echo
 
 # create network
 echo "Creating vlan.0 network ..."
-acli net.create $VLAN_NAME vlan=0 ip_config=$VLAN_IP_CONFIG;
+acli net.create $VLAN_NAME vlan=$VLAN ip_config=$VLAN_IP_CONFIG;
 echo "Adding DHCP pool ..."
 acli net.add_dhcp_pool $VLAN_NAME start=$DHCP_START end=$DHCP_END;
 echo "Configuring $VLAN_NAME DNS settings ..."
